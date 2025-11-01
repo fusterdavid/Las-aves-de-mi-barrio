@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>GOAL — Secuencia Didáctica Interactiva</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url("Green-Wall.png") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 2rem;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .mapa {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .nodo {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .nodo:hover {
+    transform: scale(1.03);
+  }
+
+  .nodo::before {
+    content: attr(data-num);
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    font-size: 8rem;
+    font-weight: 900;
+    color: currentColor;
+    opacity: 0.25;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .contenido {
+    position: relative;
+    z-index: 2;
+  }
+
+  .titulo {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .texto {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Colores de los nodos */
+  .verde { color: #34d399; border-left: 6px solid #34d399; }
+  .azul { color: #38bdf8; border-left: 6px solid #38bdf8; }
+  .fucsia { color: #e879f9; border-left: 6px solid #e879f9; }
+  .amarillo { color: #facc15; border-left: 6px solid #facc15; }
+  .rojo { color: #fb7185; border-left: 6px solid #fb7185; }
+  .gris { color: #a3a3a3; border-left: 6px solid #a3a3a3; }
+
+  .nodo a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .linea {
+    width: 4px;
+    height: 60px;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.5),
+      rgba(255,255,255,0.5) 6px,
+      transparent 6px,
+      transparent 12px
+    );
+    opacity: 0.6;
+    border-radius: 2px;
+  }
+
+  footer {
+    margin-top: 4rem;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+  }
+</style>
+</head>
+<body>
+
+<h1> Mapa de la secuencia didáctica</h1>
+
+<div class="mapa">
+  <!-- Nodo 0 -->
+  <div class="nodo gris" data-num="0">
+    <div class="contenido">
+      <div class="titulo"><a href="tutorialdeinicio.html" target="_blank">Inicio — Tutorial y Guía General</a></div>
+      <div class="texto">
+        En este espacio encontrarás el tutorial y toda la información necesaria para avanzar en los siguientes pasos de la secuencia GOAL.
+      </div>
+    </div>
+  </div>
+
+  <div class="linea"></div>
+
+  <!-- Nodo 1 -->
+  <div class="nodo verde" data-num="1">
+    <div class="contenido">
+      <div class="titulo">Semana 1: Exploración y Conformación de Equipos</div>
+      <div class="texto">
+        Salida por el barrio: registros (notas, fotos, audios). Carga en <a href="https://ebird.org/home" target="_blank">eBird</a>. 
+        Puesta en común, merienda y elección de un ave por grupo.
+      </div>
+    </div>
+  </div>
+
+  <div class="linea"></div>
+
+  <!-- Nodo 2 -->
+  <div class="nodo fucsia" data-num="2">
+    <div class="contenido">
+      <div class="titulo">Indagación y Sistematización</div>
+      <div class="texto">
+        Investigación colaborativa sobre biología, territorio y simbolismos. Sistematización en <a href="https://docs.google.com/" target="_blank">Google Docs</a>, 
+        <a href="https://padlet.com/" target="_blank">Padlet</a> o blog grupal.
+      </div>
+    </div>
+  </div>
+
+  <div class="linea"></div>
+
+  <!-- Nodo 3 -->
+  <div class="nodo azul" data-num="3">
+    <div class="contenido">
+      <div class="titulo">Representación Creativa</div>
+      <div class="texto">
+        Producción de maquetas, canciones, videos o títeres. Creatividad libre. Principio de innovación abierta.
+      </div>
+    </div>
+  </div>
+
+  <div class="linea"></div>
+
+  <!-- Nodo 4 -->
+  <div class="nodo amarillo" data-num="4">
+    <div class="contenido">
+      <div class="titulo">Socialización y Alcance Comunitario</div>
+      <div class="texto">
+        Muestra itinerante, actividades con niños/as y enseñanza de registro en 
+        <a href="https://ebird.org/home" target="_blank">eBird</a> y 
+        <a href="https://www.inaturalist.org/" target="_blank">iNaturalist</a>.
+      </div>
+    </div>
+  </div>
+
+  <div class="linea"></div>
+
+  <!-- Nodo 5 -->
+  <div class="nodo rojo" data-num="5">
+    <div class="contenido">
+      <div class="titulo">Evaluación y EcoReto Natural</div>
+      <div class="texto">
+        Evaluación formativa gamificada con el <a href="https://fusterdavid.github.io/reconocenat/" target="_blank">EcoReto Natural</a>. 
+        Autoevaluación, coevaluación y reconocimiento comunitario.
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Diseño GOAL · Catriel · 25 de Mayo · Puelén (Patagonia Argentina)
+</footer>
+
+</body>
+</html>
+
