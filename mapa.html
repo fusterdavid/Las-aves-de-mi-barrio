@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
 <title>GOAL — Secuencia Didáctica Interactiva</title>
-<link rel="preload" href="assets/Green-Wall.webp" as="image">
-<link rel="preload" href="assets/Green-Wall-mobile.webp" as="image">
+<link rel="preload" href="assets/Green-Wall.svg" as="image">
+<link rel="preload" href="assets/Green-Wall-mobile.svg" as="image">
 <style>
   :root{
     --bg-tint: rgba(255,255,255,0.15);
@@ -18,12 +18,15 @@
   body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    /* background optimized: use WebP for modern browsers; fallbacks to PNG/JPG can be included alongside in repo */
-    background-image: url("assets/Green-Wall.webp");
+    /* use lightweight SVG backgrounds for crisp scaling and small file size */
+    background-image: url("assets/Green-Wall.svg");
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
+    /* overlay to ensure text contrast */
+    background-color: rgba(0,0,0,0.28);
+    background-blend-mode: multiply;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -37,7 +40,7 @@
   /* Mobile: swap to optimized smaller image */
   @media (max-width: 420px) {
     body {
-      background-image: url("assets/Green-Wall-mobile.webp");
+      background-image: url("assets/Green-Wall-mobile.svg");
       /* don't keep fixed attachment on mobile for performance */
       background-attachment: scroll;
     }
