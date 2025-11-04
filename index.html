@@ -123,6 +123,7 @@
     button:hover {
       background: rgba(255, 255, 255, 0.2);
     }
+    
   </style>
 </head>
 <body>
@@ -162,6 +163,56 @@
   border: none;
   border-radius: 8px;
 }
+   /* 🔗 Estilos del botón de compartir */
+    .share-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .share-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.3rem;
+      color: white;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .share-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .share-icons {
+      display: none;
+      position: absolute;
+      top: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px;
+      padding: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 10;
+    }
+
+    .share-icons a {
+      margin: 0 6px;
+    }
+
+    .share-icons img {
+      width: 22px;
+      height: 22px;
+      filter: invert(1);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .share-icons img:hover {
+      transform: scale(1.2);
+    }
 </style>
 
 <div class="audio-box">
