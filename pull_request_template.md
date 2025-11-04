@@ -1,0 +1,1 @@
+Este PR hace que mapa.html sea responsive, añade meta viewport, grid responsive y mejoras de accesibilidad. Agrega recursos de fondo optimizados en assets/ (Green-Wall.svg y Green-Wall-mobile.svg) para mejorar rendimiento en escritorio y móvil. Recomendado revisar contraste y probar en dispositivos móviles antes de mergear.
