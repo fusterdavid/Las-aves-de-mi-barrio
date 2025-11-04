@@ -1,315 +1,447 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Tutorial</title>
   <style>
+    :root{
+      --glass-bg: rgba(0,0,0,0.25);
+      --glass-bg-strong: rgba(255,255,255,0.96);
+      --accent: rgba(0,150,150,0.9);
+      --card-radius: 12px;
+      --max-width: 1000px;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
       background: url("Green-Wall.png") no-repeat center center fixed;
       background-size: cover;
       color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
       min-height: 100vh;
-      padding: 2rem;
+      padding: 1.5rem;
       box-sizing: border-box;
-      position: relative;
+      gap: 1rem;
     }
 
+    /* Header */
     header {
       width: 100%;
+      max-width: var(--max-width);
       display: flex;
-      justify-content: space-between;
+      gap: 1rem;
       align-items: center;
-      backdrop-filter: blur(10px);
-      background: rgba(0, 0, 0, 0.3);
-      padding: 1rem 2rem;
-      border-radius: 1rem;
-      margin-bottom: 2rem;
+      justify-content: space-between;
+      backdrop-filter: blur(8px);
+      background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.2));
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
       box-sizing: border-box;
-      z-index: 10;
-      position: relative;
+      z-index:2;
+    }
+
+    .header-left {
+      display:flex;
+      align-items:center;
+      gap:0.75rem;
+      min-width:0;
+    }
+
+    header h1{
+      margin:0;
+      font-size:1.1rem;
+      line-height:1.1;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .header-right {
+      display:flex;
+      gap:0.5rem;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
 
     .datetime-weather {
-      text-align: right;
-      font-size: 1rem;
-      line-height: 1.4;
+      text-align:right;
+      font-size:0.9rem;
+      line-height:1.2;
+      min-width:160px;
     }
 
-    h1, h2 {
-      margin: 0;
-      font-size: 1.8rem;
+    .datetime-weather .small {
+      font-size:0.85rem;
+      opacity:0.95;
     }
 
+    header button.icon-btn{
+      background: transparent;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 6px 8px;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:1rem;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:0.35rem;
+    }
+
+    header button.icon-btn:hover{
+      transform: translateY(-2px);
+      transition: transform 0.12s ease;
+    }
+
+    /* Title / subtitle */
     h2 {
-      width: 100%;
-      max-width: 1000px;
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
-      backdrop-filter: blur(10px);
-      background: rgba(0, 0, 0, 0.2);
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      box-sizing: border-box;
+      width:100%;
+      max-width: var(--max-width);
+      margin: 0;
+      font-size: 1.1rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(6px);
+      box-sizing:border-box;
+      color: #fff;
     }
 
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
-      width: 100%;
-      max-width: 1000px;
-      margin-bottom: 2rem;
-      position: relative;
-      z-index: 1;
+    /* Cards grid */
+    .card-container{
+      width:100%;
+      max-width: var(--max-width);
+      display:grid;
+      gap:1rem;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      box-sizing:border-box;
     }
 
-    .card {
-      position: relative;
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 1rem;
-      padding: 1rem;
-      text-align: center;
-      transition: transform 0.2s ease;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      overflow: visible;
-      z-index: 2;
-      cursor: pointer;
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border-radius: var(--card-radius);
+      padding: 0.9rem;
+      text-align:center;
+      color:#fff;
+      cursor:pointer;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      user-select:none;
     }
 
-    .card:hover {
-      transform: scale(1.05);
+    .card:hover{ transform: translateY(-6px) scale(1.02); }
+    .card:active{ transform: translateY(-2px) scale(0.995); }
+
+    .card a, .card span {
+      color: #fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:0.95rem;
+      display:block;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .card a {
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: bold;
-    }
-
-    /* --- Tarjeta emergente flotante --- */
-    .hover-info {
+    /* Floating tooltip (desktop) */
+    .hover-info{
       position: fixed;
-      opacity: 0;
-      transform: translate(-50%, -10px) scale(0.98);
-      width: 260px;
-      background: rgba(255, 255, 255, 0.98);
-      border: 2px solid rgba(0, 150, 150, 0.3);
-      backdrop-filter: blur(8px);
-      border-radius: 1rem;
-      padding: 1rem;
-      box-shadow: 0 6px 30px rgba(0, 150, 150, 0.3);
-      text-align: left;
-      transition: all 0.25s ease;
-      z-index: 9999;
+      left:50%;
+      top:50%;
+      transform: translate(-50%,-50%);
+      width: 320px;
+      max-width: calc(100% - 24px);
+      background: var(--glass-bg-strong);
       color: #111;
-      display: none;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+      border: 2px solid rgba(0,150,150,0.15);
+      display:none;
+      z-index:9999;
+      box-sizing:border-box;
     }
 
-    .hover-info.visible {
-      display: block;
-      opacity: 1;
-      transform: translate(-50%, 0) scale(1);
+    .hover-info.visible{ display:block; }
+    .hover-info p{ margin: 0 0 0.9rem 0; font-size:0.95rem; color:#000; }
+    .hover-info a{
+      display:inline-block;
+      background: rgba(0,150,150,0.12);
+      color:#003333;
+      padding: 0.45rem 0.9rem;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:700;
     }
 
-    .hover-info p {
-      font-size: 0.9rem;
-      margin: 0 0 0.8rem 0;
-      color: #000;
+    .hover-info .close-btn{
+      position:absolute;
+      top:8px;
+      right:10px;
+      border:none;
+      background:transparent;
+      color:#c22;
+      font-weight:700;
+      cursor:pointer;
+      font-size:1rem;
     }
 
-    .hover-info a {
-      display: inline-block;
-      background: rgba(0, 150, 150, 0.15);
-      color: #003333;
-      padding: 0.4rem 0.8rem;
-      border-radius: 0.4rem;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.85rem;
-      transition: background 0.2s ease, color 0.2s ease;
+    /* Audio container */
+    .audio-player-container{
+      width:100%;
+      max-width:512px;
+      padding:0.75rem;
+      background:var(--glass-bg);
+      border-radius:12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      text-align:center;
+      box-sizing:border-box;
     }
 
-    .hover-info a:hover {
-      background: rgba(0, 150, 150, 0.35);
-      color: #000;
+    .audio-player-container h3{ margin:0 0 0.5rem 0; font-size:0.95rem; }
+    audio{ width:100%; border-radius:8px; display:block; }
+
+    /* Small screens adjustments */
+    @media (max-width:700px){
+      header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:0.5rem;
+        padding:0.6rem;
+      }
+      .header-right{ width:100%; display:flex; justify-content:space-between; }
+      .datetime-weather{ text-align:left; min-width:0; }
+      h1{ font-size:1rem; }
+      h2{ font-size:1rem; padding:0.4rem; }
+      .hover-info{ left:50%; bottom: 8vh; top: auto; transform: translateX(-50%); width: 92%; }
+      .card{ padding:0.7rem; }
+      .audio-player-container{ max-width:100%; padding:0.6rem; }
     }
 
-    /* Botón X para cerrar */
-    .close-btn {
-      position: absolute;
-      top: 6px;
-      right: 10px;
-      background: none;
-      border: none;
-      color: red;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .close-btn:hover {
-      transform: scale(1.3);
-    }
-
-    .audio-player-container {
-      width: 100%;
-      max-width: 512px;
-      margin-top: 2rem;
-      padding: 0.8rem;
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      border-radius: 1rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      text-align: center;
-    }
-
-    .audio-player-container h3 {
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-      font-size: 0.5rem;
-    }
-
-    audio {
-      width: 100%;
-      border-radius: 0.5rem;
-    }
-
-    button {
-      background: rgba(255, 255, 255, 0.1);
-      border: none;
-      padding: 0.2rem 0.4rem;
-      border-radius: 0.3rem;
-      color: white;
-      font-size: 0.6rem;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-
-    button:hover {
-      background: rgba(255, 255, 255, 0.2);
+    /* Very small screens */
+    @media (max-width:420px){
+      header{ padding:0.5rem; }
+      header h1{ font-size:0.95rem; }
+      .card a{ font-size:0.9rem; }
+      .datetime-weather{ font-size:0.85rem; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Tutorial y guía para la secuencia didáctica</h1>
-    <div class="datetime-weather">
-      <div id="clock">Cargando hora...</div>
-      <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <div id="weather">Cargando clima...</div>
-        <a href="https://www.meteored.com.ar/tiempo-en_Catriel-America+Sur-Argentina-Rio+Negro--1-16647.html"
-           target="_blank" title="Pronóstico extendido"
-           style="color: #fff; text-decoration: none; font-size: 1.2rem;">🔎</a>
-      </div>
+    <div class="header-left">
+      <h1 title="Tutorial completo">Tutorial y guía para la secuencia didáctica</h1>
     </div>
-    <div style="display: flex; gap: 1rem; align-items: center;">
-      <button onclick="openFiles()" title="Abrir gestor de archivos">📁</button>
-      <button onclick="toggleFullscreen()" title="Pantalla completa">🔳</button>
+
+    <div class="header-right" aria-hidden="false">
+      <div class="datetime-weather" aria-live="polite">
+        <div id="clock" class="small">Cargando hora...</div>
+        <div style="display:flex; align-items:center; gap:0.5rem; font-size:1rem;">
+          <div id="weather" class="small">Cargando clima...</div>
+          <a href="https://www.meteored.com.ar/tiempo-en_Catriel-America+Sur-Argentina-Rio+Negro--1-16647.html"
+             target="_blank" rel="noopener noreferrer" title="Pronóstico extendido"
+             style="color:#fff; text-decoration:none; font-size:1.1rem;">🔎</a>
+        </div>
+      </div>
+
+      <div style="display:flex; gap:0.5rem; align-items:center;">
+        <button class="icon-btn" onclick="openFiles()" title="Abrir gestor de archivos">📁</button>
+        <button class="icon-btn" onclick="toggleFullscreen()" title="Pantalla completa">🔳</button>
+      </div>
     </div>
   </header>
 
   <h2>Grupo de Observadores de Aves en Libertad</h2>
 
-  <div class="card-container">
-    <div class="card" onclick="showTooltip(event, 'Te damos la bienvenida a la secuencia didáctica. ¡Comencemos juntos! El Grupo de Observadores de Aves de Catriel-25 de Mayo -Puelén quieren expresarte su alegría de que te sumes a esta propuesta de actividad de enseñanza y aprendizaje que explora los diferentes barrios de la ciudad para conocer sus aves.', 'bienvenida.html')">Bienvenida</div>
-    <div class="card" onclick="showTooltip(event, 'Explora el recorrido completo de esta experiencia de aprendizaje.', 'mapa.html')">MAPA DE LA SECUENCIA</div>
-    <div class="card" onclick="showTooltip(event, 'Primer paso de la secuencia: introducción y primeros conceptos.', 'Paso 1.html')">PASO 1</div>
-    <div class="card" onclick="showTooltip(event, 'Accede a los recursos en la plataforma Pedco de la UNCo.', 'https://pedco.uncoma.edu.ar/')">PASO 2</div>
-    <div class="card" onclick="showTooltip(event, 'Consulta información adicional para complementar tu aprendizaje.', 'https://www.google.com')">PASO 3</div>
-    <div class="card" onclick="showTooltip(event, 'Conecta y comparte con tus compañeros a través de WhatsApp Web.', 'https://web.whatsapp.com')">PASO 4</div>
-    <div class="card" onclick="showTooltip(event, 'Participa en el desafío ecológico y pon a prueba tus conocimientos.', 'https://fusterdavid.github.io/reconocenat/')">EcoReto</div>
-    <div class="card" onclick="showTooltip(event, 'Traduce, explora y profundiza en nuevos conceptos clave.', 'https://www.google.com/search?client=ubuntu&channel=fs&q=traductor')">PASO 5</div>
-    <div class="card" onclick="showTooltip(event, 'Esta sección aún está en desarrollo. ¡Pronto habrá novedades!', '#')">En construcción</div>
-  </div>
+  <main class="card-container" role="main" aria-label="Opciones de la secuencia">
+    <div class="card" onclick="showTooltip(event, 'Te damos la bienvenida a la secuencia didáctica. ¡Comencemos juntos! El Grupo de Observadores de Aves de Catriel-25 de Mayo -Puelén quieren expresar...')">
+      <span>BIENVENIDA</span>
+    </div>
 
-  <div class="audio-player-container">
+    <div class="card" onclick="showTooltip(event, 'Explora el recorrido completo de esta experiencia de aprendizaje.', 'mapa.html')">
+      <span>MAPA DE LA SECUENCIA</span>
+    </div>
+
+    <div class="card" onclick="showTooltip(event, 'Primer paso de la secuencia: introducción y primeros conceptos.', 'Paso 1.html')">
+      <span>PASO 1</span>
+    </div>
+
+    <div class="card" onclick="showTooltip(event, 'Accede a los recursos en la plataforma Pedco de la UNCo.', 'https://pedco.uncoma.edu.ar/')">
+      <span>PASO 2</span>
+    </div>
+
+    <div class="card" onclick="showTooltip(event, 'Consulta información adicional para complementar tu aprendizaje.', 'https://www.google.com')">
+      <span>PASO 3</span>
+    </div>
+
+    <div class="card" onclick="showTooltip(event, 'Conecta y comparte con tus compañeros a través de WhatsApp Web.', 'https://web.whatsapp.com')">
+      <span>PASO 4</span>
+    </div>
+
+    <div class="card" onclick="showTooltip(event, 'Participa en el desafío ecológico y pon a prueba tus conocimientos.', 'https://fusterdavid.github.io/reconocenat/')">
+      <span>EcoReto</span>
+    </div>
+
+    <div class="card" onclick="showTooltip(event, 'Traduce, explora y profundiza en nuevos conceptos clave.', 'https://www.google.com/search?client=ubuntu&channel=fs&q=traductor')">
+      <span>PASO 5</span>
+    </div>
+
+    <div class="card" onclick="showTooltip(event, 'Esta sección aún está en desarrollo. ¡Pronto habrá novedades!', '#')">
+      <span>En construcción</span>
+    </div>
+  </main>
+
+  <div class="audio-player-container" aria-label="Reproductor de Radio">
     <h3>📻 Escuchando Radio Calf UNCO</h3>
-    <audio controls>
+    <audio controls preload="none" aria-label="Radio Calf UNCO">
       <source src="https://radio.streamingnacional.online/8324/stream" type="audio/mpeg">
       Tu navegador no soporta el elemento de audio.
     </audio>
   </div>
 
-  <div id="tooltip" class="hover-info">
-    <button class="close-btn" onclick="hideTooltip()">✕</button>
+  <div id="tooltip" class="hover-info" role="dialog" aria-modal="false" aria-hidden="true">
+    <button class="close-btn" onclick="hideTooltip()" aria-label="Cerrar tooltip">✕</button>
     <p id="tooltip-text"></p>
-    <a id="tooltip-link" href="#" target="_blank">Ir</a>
+    <a id="tooltip-link" href="#" target="_blank" rel="noopener noreferrer">Ir</a>
   </div>
 
   <script>
-    // --- Reloj ---
+    // Reloj
     function updateClock() {
       const now = new Date();
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
       const date = now.toLocaleDateString('es-AR', options);
       const time = now.toLocaleTimeString('es-AR');
-      document.getElementById('clock').innerText = `${date} - ${time}`;
+      const el = document.getElementById('clock');
+      if (el) el.innerText = `${date} - ${time}`;
     }
-    setInterval(updateClock, 1000);
     updateClock();
+    setInterval(updateClock, 1000);
 
-    // --- Clima ---
-    async function fetchWeather() {
-      const lat = -37.8769;
-      const lon = -67.7926;
-      const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=America/Argentina/Salta`);
-      const data = await response.json();
-      if (data && data.current_weather) {
-        const temp = data.current_weather.temperature;
-        const weathercode = data.current_weather.weathercode;
-        const weatherEmoji = {
-          0: "☀️", 1: "🌤️", 2: "⛅", 3: "☁️", 45: "🌫️", 48: "🌫️",
-          51: "🌦️", 53: "🌦️", 55: "🌦️", 56: "🥶", 57: "🥶",
-          61: "🌧️", 63: "🌧️", 65: "🌧️", 66: "🥶", 67: "🥶",
-          71: "🌨️", 73: "🌨️", 75: "🌨️", 77: "❄️",
-          80: "🌦️", 81: "🌧️", 82: "⛈️",
-          85: "🌨️", 86: "🌨️",
-          95: "⛈️", 96: "⛈️", 99: "🌪️"
-        };
-        const emoji = weatherEmoji[weathercode] || "🌡️";
-        document.getElementById('weather').innerText = `${emoji} ${temp} °C en Catriel`;
-      } else {
+    // Clima (Open-Meteo)
+    async function fetchWeather(){
+      try{
+        const lat = -37.8769;
+        const lon = -67.7926;
+        const resp = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=America/Argentina/Salta`);
+        const data = await resp.json();
+        if (data && data.current_weather){
+          const temp = data.current_weather.temperature;
+          const weathercode = data.current_weather.weathercode;
+          const weatherEmoji = {
+            0: "☀️", 1: "🌤️", 2: "⛅", 3: "☁️", 45: "🌫️", 48: "🌫️",
+            51: "🌦️", 53: "🌦️", 55: "🌦️", 56: "🥶", 57: "🥶",
+            61: "🌧️", 63: "🌧️", 65: "🌧️", 66: "🥶", 67: "🥶",
+            71: "🌨️", 73: "🌨️", 75: "🌨️", 77: "❄️",
+            80: "🌦️", 81: "🌧️", 82: "⛈️",
+            85: "🌨️", 86: "🌨️",
+            95: "⛈️", 96: "⛈️", 99: "🌪️"
+          };
+          const emoji = weatherEmoji[weathercode] || "🌡️";
+          document.getElementById('weather').innerText = `${emoji} ${temp} °C en Catriel`;
+        } else {
+          document.getElementById('weather').innerText = "Clima no disponible";
+        }
+      }catch(e){
         document.getElementById('weather').innerText = "Clima no disponible";
+        console.warn('Error fetchWeather', e);
       }
     }
     fetchWeather();
     setInterval(fetchWeather, 600000);
 
-    // --- Acciones varias ---
-    function openFiles() {
-      window.location.href = "file://home/david";
+    // Botones auxiliares
+    function openFiles(){
+      // Atención: abrir file:// puede no funcionar en navegadores por seguridad
+      try{
+        window.location.href = "file://home/david";
+      }catch(e){ console.warn('openFiles blocked', e); }
     }
-    function toggleFullscreen() {
+    function toggleFullscreen(){
       const elem = document.documentElement;
-      if (!document.fullscreenElement) elem.requestFullscreen();
-      else document.exitFullscreen();
+      if (!document.fullscreenElement && elem.requestFullscreen) {
+        elem.requestFullscreen().catch(()=>{});
+      } else if (document.exitFullscreen) {
+        document.exitFullscreen().catch(()=>{});
+      }
     }
 
-    // --- Tooltip flotante ---
+    // Tooltip interactivo (soporta click/touch y posiciona de forma usable en móviles)
     const tooltip = document.getElementById('tooltip');
     const tooltipText = document.getElementById('tooltip-text');
     const tooltipLink = document.getElementById('tooltip-link');
 
-    function showTooltip(event, text, link) {
-      tooltipText.textContent = text;
-      tooltipLink.href = link;
+    // Determina si el dispositivo es táctil
+    const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+
+    function showTooltip(event, text, link){
+      event = event || window.event;
+      // texto y link
+      tooltipText.textContent = text || '';
+      tooltipLink.href = link || '#';
+      // Para accesibilidad
+      tooltip.setAttribute('aria-hidden','false');
       tooltip.classList.add('visible');
-      tooltip.style.left = event.clientX + 'px';
-      tooltip.style.top = (event.clientY + 20) + 'px';
+
+      // Obtener posición: si es touch, usar touches; si click, clientX/clientY
+      let clientX = (event.touches && event.touches[0]) ? event.touches[0].clientX : (event.clientX || window.innerWidth/2);
+      let clientY = (event.touches && event.touches[0]) ? event.touches[0].clientY : (event.clientY || window.innerHeight/2);
+
+      // En pantallas pequeñas colocamos el tooltip en la parte inferior central para evitar solapamientos
+      if (window.innerWidth <= 700){
+        tooltip.style.left = '50%';
+        tooltip.style.top = document.documentElement.scrollHeight <= window.innerHeight ? '50%' : '';  
+        tooltip.style.bottom = '7vh';
+        tooltip.style.transform = 'translateX(-50%)';
+      } else {
+        // Intentamos posicionar cerca del cursor, evitando que se salga de la ventana
+        const padding = 12;
+        const tooltipRect = tooltip.getBoundingClientRect();
+        let left = clientX;
+        let top = clientY + 18;
+        // evitar salir por la derecha
+        if (left + tooltipRect.width/2 + padding > window.innerWidth) left = window.innerWidth - tooltipRect.width/2 - padding;
+        if (left - tooltipRect.width/2 - padding < 0) left = tooltipRect.width/2 + padding;
+        tooltip.style.left = left + 'px';
+        tooltip.style.top = top + 'px';
+        tooltip.style.bottom = '';
+        tooltip.style.transform = 'translate(-50%, 0)';
+      }
     }
 
-    function hideTooltip() {
+    function hideTooltip(){
+      tooltip.setAttribute('aria-hidden','true');
       tooltip.classList.remove('visible');
     }
+
+    // Cerrar tooltip al hacer clic fuera (útil en móviles y escritorio)
+    document.addEventListener('click', function(e){
+      const target = e.target;
+      if (!tooltip.contains(target) && !target.closest('.card')){
+        hideTooltip();
+      }
+    }, true);
+
+    // Añadir soporte a teclas (Escape) para cerrar
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') hideTooltip();
+    });
+
+    // Mejorar la experiencia en touch: al tocar una tarjeta, mostrar tooltip en el centro inferior
+    // Nota: mantengo onclick en las tarjetas ya existentes, que llamarán a showTooltip.
+    // Si quieres que el primer toque solo abra (sin navegar), esto lo respeta: showTooltip no navega automáticamente.
   </script>
 </body>
 </html>
