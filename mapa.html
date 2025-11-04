@@ -30,24 +30,20 @@
   }
 
   .mapa {
-    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
     width: 100%;
-    max-width: 900px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
+    max-width: 800px;
   }
 
   .nodo {
     position: relative;
-    width: 80%;
-    max-width: 600px;
-    padding: 1.5rem;
-    border-radius: 1.2rem;
+    padding: 1rem;
+    border-radius: 1rem;
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 3px 15px rgba(0,0,0,0.3);
     transition: transform 0.2s ease;
     cursor: pointer;
     overflow: hidden;
@@ -62,7 +58,7 @@
     position: absolute;
     top: 10%;
     right: 10%;
-    font-size: 8rem;
+    font-size: 4rem;
     font-weight: 900;
     color: currentColor;
     opacity: 0.25;
@@ -73,109 +69,130 @@
   .contenido {
     position: relative;
     z-index: 2;
+    color: #0D0201;
   }
 
   .titulo {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
+    color: #0D0201;
   }
 
   .texto {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #0D0201;
+    margin-bottom: 0.8rem;
   }
 
-  /* Colores de los nodos */
-  .verde { color: #34d399; border-left: 6px solid #34d399; }
-  .azul { color: #38bdf8; border-left: 6px solid #38bdf8; }
-  .fucsia { color: #e879f9; border-left: 6px solid #e879f9; }
-  .amarillo { color: #facc15; border-left: 6px solid #facc15; }
-  .rojo { color: #fb7185; border-left: 6px solid #fb7185; }
-  .gris { color: #a3a3a3; border-left: 6px solid #a3a3a3; }
-
   .nodo a {
-    color: inherit;
+    color: #0D0201;
     text-decoration: none;
   }
 
-  .linea {
-    width: 4px;
-    height: 60px;
-    background: repeating-linear-gradient(
-      to bottom,
-      rgba(255,255,255,0.5),
-      rgba(255,255,255,0.5) 6px,
-      transparent 6px,
-      transparent 12px
-    );
-    opacity: 0.6;
-    border-radius: 2px;
+  .link-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.3);
+    padding: 0.3rem 0.6rem;
+    border-radius: 0.5rem;
+    transition: background 0.2s ease;
   }
 
+  .link-info:hover {
+    background: rgba(255,255,255,0.5);
+  }
+
+  .link-info svg {
+    width: 16px;
+    height: 16px;
+    fill: #0D0201;
+  }
+
+  /* Colores de borde */
+  .verde { border-left: 6px solid #34d399; }
+  .azul { border-left: 6px solid #38bdf8; }
+  .fucsia { border-left: 6px solid #e879f9; }
+  .amarillo { border-left: 6px solid #facc15; }
+  .rojo { border-left: 6px solid #fb7185; }
+  .gris { border-left: 6px solid #a3a3a3; }
+
   footer {
-    margin-top: 4rem;
+    margin-top: 3rem;
     font-size: 0.8rem;
     color: rgba(255,255,255,0.7);
+    text-align: center;
   }
 </style>
 </head>
 <body>
 
-<h1> Mapa de la secuencia didáctica</h1>
+<h1>Mapa de la secuencia didáctica</h1>
 
 <div class="mapa">
-  <!-- Nodo 0 -->
+  <!-- Fila 1 -->
   <div class="nodo gris" data-num="0">
     <div class="contenido">
       <div class="titulo"><a href="tutorialdeinicio.html" target="_blank">Inicio — Tutorial y Guía General</a></div>
       <div class="texto">
         En este espacio encontrarás el tutorial y toda la información necesaria para avanzar en los siguientes pasos de la secuencia GOAL.
       </div>
+      <a href="tutorial.html" class="link-info" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3l7 7-7 7v-4H3v-6h11V3z"/></svg>
+        Ir por más información
+      </a>
     </div>
   </div>
 
-  <div class="linea"></div>
-
-  <!-- Nodo 1 -->
   <div class="nodo verde" data-num="1">
     <div class="contenido">
       <div class="titulo">Semana 1: Exploración y Conformación de Equipos</div>
       <div class="texto">
-        Salida por el barrio: registros (notas, fotos, audios). Carga en <a href="https://ebird.org/home" target="_blank">eBird</a>. 
+        Salida por el barrio: registros (notas, fotos, audios). Carga en 
+        <a href="https://ebird.org/home" target="_blank">eBird</a>. 
         Puesta en común, merienda y elección de un ave por grupo.
       </div>
+      <a href="tutorial.html" class="link-info" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3l7 7-7 7v-4H3v-6h11V3z"/></svg>
+        Ir por más información
+      </a>
     </div>
   </div>
 
-  <div class="linea"></div>
-
-  <!-- Nodo 2 -->
+  <!-- Fila 2 -->
   <div class="nodo fucsia" data-num="2">
     <div class="contenido">
       <div class="titulo">Indagación y Sistematización</div>
       <div class="texto">
-        Investigación colaborativa sobre biología, territorio y simbolismos. Sistematización en <a href="https://docs.google.com/" target="_blank">Google Docs</a>, 
+        Investigación colaborativa sobre biología, territorio y simbolismos. Sistematización en 
+        <a href="https://docs.google.com/" target="_blank">Google Docs</a>, 
         <a href="https://padlet.com/" target="_blank">Padlet</a> o blog grupal.
       </div>
+      <a href="tutorial.html" class="link-info" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3l7 7-7 7v-4H3v-6h11V3z"/></svg>
+        Ir por más información
+      </a>
     </div>
   </div>
 
-  <div class="linea"></div>
-
-  <!-- Nodo 3 -->
   <div class="nodo azul" data-num="3">
     <div class="contenido">
       <div class="titulo">Representación Creativa</div>
       <div class="texto">
         Producción de maquetas, canciones, videos o títeres. Creatividad libre. Principio de innovación abierta.
       </div>
+      <a href="tutorial.html" class="link-info" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3l7 7-7 7v-4H3v-6h11V3z"/></svg>
+        Ir por más información
+      </a>
     </div>
   </div>
 
-  <div class="linea"></div>
-
-  <!-- Nodo 4 -->
+  <!-- Fila 3 -->
   <div class="nodo amarillo" data-num="4">
     <div class="contenido">
       <div class="titulo">Socialización y Alcance Comunitario</div>
@@ -184,19 +201,25 @@
         <a href="https://ebird.org/home" target="_blank">eBird</a> y 
         <a href="https://www.inaturalist.org/" target="_blank">iNaturalist</a>.
       </div>
+      <a href="tutorial.html" class="link-info" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3l7 7-7 7v-4H3v-6h11V3z"/></svg>
+        Ir por más información
+      </a>
     </div>
   </div>
 
-  <div class="linea"></div>
-
-  <!-- Nodo 5 -->
   <div class="nodo rojo" data-num="5">
     <div class="contenido">
       <div class="titulo">Evaluación y EcoReto Natural</div>
       <div class="texto">
-        Evaluación formativa gamificada con el <a href="https://fusterdavid.github.io/reconocenat/" target="_blank">EcoReto Natural</a>. 
+        Evaluación formativa gamificada con el 
+        <a href="https://fusterdavid.github.io/reconocenat/" target="_blank">EcoReto Natural</a>. 
         Autoevaluación, coevaluación y reconocimiento comunitario.
       </div>
+      <a href="tutorial.html" class="link-info" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 3l7 7-7 7v-4H3v-6h11V3z"/></svg>
+        Ir por más información
+      </a>
     </div>
   </div>
 </div>
@@ -207,4 +230,3 @@
 
 </body>
 </html>
-
