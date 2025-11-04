@@ -139,9 +139,25 @@
   </div>
   
     </div>
-    <div style="display: flex; gap: 1rem; align-items: center;">
-      <button onclick="openFiles()" title="Abrir gestor de archivos">📁</button>
+   <div style="display: flex; gap: 1rem; align-items: center; position: relative;">
+      <!-- 🔗 Nuevo botón de compartir -->
+      <div class="share-container">
+        <button class="share-btn" title="Compartir esta página">🔗</button>
+        <div class="share-icons">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://fusterdavid.github.io/Las-aves-de-mi-barrio/index.html" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
+          </a>
+          <a href="https://api.whatsapp.com/send?text=Mira%20esta%20página%20sobre%20aves:%20https://fusterdavid.github.io/Las-aves-de-mi-barrio/index.html" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp">
+          </a>
+          <a href="https://www.instagram.com/?url=https://fusterdavid.github.io/Las-aves-de-mi-barrio/index.html" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+          </a>
+        </div>
+      </div>
+
       <button onclick="toggleFullscreen()" title="Pantalla completa">🔳</button>
+    </div>
     </div>
   </header>
 <style>
