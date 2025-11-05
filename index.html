@@ -55,7 +55,6 @@
       box-sizing: border-box;
     }
 
-
     .card-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -88,9 +87,9 @@
 
     .audio-player-container {
       width: 100%;
-      max-width: 512px; /* 20% más pequeño */
+      max-width: 512px;
       margin-top: 2rem;
-      padding: 0.8rem; /* ajustado */
+      padding: 0.8rem;
       background: rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(10px);
       border-radius: 1rem;
@@ -101,7 +100,7 @@
     .audio-player-container h3 {
       margin-top: 0;
       margin-bottom: 0.5rem;
-      font-size: 0.5rem; /* un poco más pequeño */
+      font-size: 0.5rem;
     }
 
     audio {
@@ -112,10 +111,10 @@
     button {
       background: rgba(255, 255, 255, 0.1);
       border: none;
-      padding: 0.2rem 0.4rem; /* reducido */
+      padding: 0.2rem 0.4rem;
       border-radius: 0.3rem;
       color: white;
-      font-size: 0.6rem; /* reducido */
+      font-size: 0.6rem;
       cursor: pointer;
       transition: background 0.2s ease;
     }
@@ -123,63 +122,27 @@
     button:hover {
       background: rgba(255, 255, 255, 0.2);
     }
-    
-  </style>
-</head>
-<body>
-  <header>
-    <h1>PROYECTO: Las aves de mi barrio</h1>
-   <div class="datetime-weather">
-  <div id="clock">Cargando hora...</div>
-  <div style="display: flex; align-items: center; gap: 0.5rem;">
-    <div id="weather">Cargando clima...</div>
-    <a href="https://www.meteored.com.ar/tiempo-en_Catriel-America+Sur-Argentina-Rio+Negro--1-16647.html"
-       target="_blank" title="Pronóstico extendido"
-       style="color: #fff; text-decoration: none; font-size: 1.2rem;">🔎</a>
-  </div>
-  
-    </div>
-   <div style="display: flex; gap: 1rem; align-items: center; position: relative;">
-      <!-- 🔗 Nuevo botón de compartir -->
-      <div class="share-container">
-        <button class="share-btn" title="Compartir esta página">🔗</button>
-        <div class="share-icons">
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://fusterdavid.github.io/Las-aves-de-mi-barrio/index.html" target="_blank">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
-          </a>
-          <a href="https://api.whatsapp.com/send?text=Mira%20esta%20página%20sobre%20aves:%20https://fusterdavid.github.io/Las-aves-de-mi-barrio/index.html" target="_blank">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp">
-          </a>
-          <a href="https://www.instagram.com/?url=https://fusterdavid.github.io/Las-aves-de-mi-barrio/index.html" target="_blank">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
-          </a>
-        </div>
-      </div>
 
-      <button onclick="toggleFullscreen()" title="Pantalla completa">🔳</button>
-    </div>
-    </div>
-  </header>
-<style>
-.audio-box {
-  background: rgba(139, 97, 52, 0.2);
-  border: 1px solid rgba(139, 97, 52, 0.4);
-  border-radius: 12px;
-  padding: 8px;
-  width: 300px;
-  margin: 20px auto;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-  text-align: center;
-  backdrop-filter: blur(4px);
-}
+    .audio-box {
+      background: rgba(139, 97, 52, 0.2);
+      border: 1px solid rgba(139, 97, 52, 0.4);
+      border-radius: 12px;
+      padding: 8px;
+      width: 300px;
+      margin: 20px auto;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
 
-.audio-box iframe {
-  width: 100%;
-  height: 60px;
-  border: none;
-  border-radius: 8px;
-}
-   /* 🔗 Estilos del botón de compartir */
+    .audio-box iframe {
+      width: 100%;
+      height: 60px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    /* 🔗 Estilos del botón de compartir */
     .share-container {
       position: relative;
       display: inline-block;
@@ -229,33 +192,69 @@
     .share-icons img:hover {
       transform: scale(1.2);
     }
-</style>
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PROYECTO: Las aves de mi barrio</h1>
+    <div class="datetime-weather">
+      <div id="clock">Cargando hora...</div>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <div id="weather">Cargando clima...</div>
+        <a href="https://www.meteored.com.ar/tiempo-en_Catriel-America+Sur-Argentina-Rio+Negro--1-16647.html"
+           target="_blank" title="Pronóstico extendido"
+           style="color: #fff; text-decoration: none; font-size: 1.2rem;">🔎</a>
+      </div>
+    </div>
 
-<div class="audio-box">
-  <div class="audio-label">🎧 Escucha un podcast sobre esta secuencia mientras recorres sus partes</div>
-  <iframe 
-    src="https://archive.org/embed/podcast-secuencia-aves" 
-    frameborder="0" 
-    webkitallowfullscreen="true" 
-    mozallowfullscreen="true" 
-    allowfullscreen>
-  </iframe>
-  Si te gustó la ideda...
-</div>
-<div class="card"><a href="https://forms.gle/fMkmcP28fndc3NedA" target="_blank">Incribete al proyecto</a></div>
+    <div style="display: flex; gap: 1rem; align-items: center; position: relative;">
+      <!-- 🔗 Nuevo botón de compartir -->
+      <div class="share-container">
+        <button class="share-btn" title="Compartir esta página">🔗</button>
+        <div class="share-icons">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://fusterdavid.github.io/Las-aves-de-mi-barrio/index.html" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
+          </a>
+          <a href="https://api.whatsapp.com/send?text=Mira%20esta%20página%20sobre%20aves:%20https://fusterdavid.github.io/Las-aves-de-mi-barrio/index.html" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp">
+          </a>
+          <a href="https://www.instagram.com/?url=https://fusterdavid.github.io/Las-aves-de-mi-barrio/index.html" target="_blank">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+          </a>
+        </div>
+      </div>
+
+      <button onclick="toggleFullscreen()" title="Pantalla completa">🔳</button>
+    </div>
+  </header>
+
+  <div class="audio-box">
+    <div class="audio-label">🎧 Escucha un podcast sobre esta secuencia mientras recorres sus partes</div>
+    <iframe 
+      src="https://archive.org/embed/podcast-secuencia-aves" 
+      frameborder="0" 
+      webkitallowfullscreen="true" 
+      mozallowfullscreen="true" 
+      allowfullscreen>
+    </iframe>
+    Si te gustó la idea...
+  </div>
+
+  <div class="card"><a href="https://forms.gle/fMkmcP28fndc3NedA" target="_blank">Incribete al proyecto</a></div>
+
   <h2>Grupo de Observadores de Aves en Libertad</h2>
   <div class="card-container">
-  <div class="card"><a href="tutorial.html" target="_blank">TUTORIAL DE INICIO</a></div>
-   <div class="card"><a href="mapa.html" target="_blank">MAPA DE LA SECUENCIA</a></div>
+    <div class="card"><a href="tutorial.html" target="_blank">TUTORIAL DE INICIO</a></div>
+    <div class="card"><a href="mapa.html" target="_blank">MAPA DE LA SECUENCIA</a></div>
     <div class="card"><a href="Paso 1.html" target="_blank">PASO 1</a></div>
     <div class="card"><a href="Paso 2.html" target="_blank">PASO 2</a></div>
     <div class="card"><a href="Paso 3.html" target="_blank">PASO 3</a></div>
     <div class="card"><a href="Paso 4.html" target="_blank">PASO 4</a></div>
     <div class="card"><a href="https://fusterdavid.github.io/reconocenat/" target="_blank">EcoReto</a></div>
-
     <div class="card"><a href="https://www.google.com/search?client=ubuntu&channel=fs&q=traductor" target="_blank">PASO 5</a></div>
     <div class="card"><a href="https://www.youtube.com" target="_blank">en construcción</a></div>
- </div> 
+  </div>
+
   <h2>EN CONSTRUCCIÓN</h2>
   <div class="card"><a href="https://chatgpt.com/c/68e27887-c9b0-832d-aa22-c2a3fdb10d44" target="_blank">en construcción</a></div>
 
@@ -281,8 +280,8 @@
 
     // Clima con Open-Meteo
     async function fetchWeather() {
-      const lat = -37.8769; // Catriel, Río Negro
-      const lon = -67.7926; // Catriel, Río Negro
+      const lat = -37.8769;
+      const lon = -67.7926;
       const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=America/Argentina/Salta`);
       const data = await response.json();
 
@@ -310,11 +309,6 @@
     fetchWeather();
     setInterval(fetchWeather, 600000);
 
-    // Abrir gestor de archivos
-    function openFiles() {
-      window.location.href = "file://home/david";
-    }
-
     // Pantalla completa
     function toggleFullscreen() {
       const elem = document.documentElement;
@@ -329,7 +323,24 @@
         }
       }
     }
+
+    // Botón de compartir
+    document.addEventListener('DOMContentLoaded', () => {
+      const shareBtn = document.querySelector('.share-btn');
+      const shareIcons = document.querySelector('.share-icons');
+      
+      shareBtn.addEventListener('click', () => {
+        shareIcons.style.display = (shareIcons.style.display === 'block') ? 'none' : 'block';
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!shareBtn.contains(e.target) && !shareIcons.contains(e.target)) {
+          shareIcons.style.display = 'none';
+        }
+      });
+    });
   </script>
+
   dISEÑO: dAVID cARPENTER
 </body>
 </html>
